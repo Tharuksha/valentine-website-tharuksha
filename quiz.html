@@ -50,10 +50,7 @@
         }
     
         document.getElementById('nobtn').addEventListener('click', function() {
-            if (!musicPlayed) {
-                clickCount++; 
-    
-                
+
                     var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
                     var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
                     yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
@@ -62,7 +59,7 @@
                     playMusic(); 
                     musicPlayed = true; 
                 }
-            }
+            
         });
     </script>
 </body>

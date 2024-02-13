@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank you</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             text-align: center;
             margin-top: 30px;
             font-family: 'Courier';
-            background-color:#FFF5E4;
+            background-color: #FFF5E4;
             color: #FF9494;
         }
+
         #thankyou {
             font-size: 50px;
             margin-bottom: 20px;
         }
+
         .rizz {
-            margin-bottom: 10 px;
+            margin-bottom: 10px;
         }
+
         .button {
             padding: 10px 20px;
             font-size: 18px;
@@ -26,35 +30,44 @@
             margin: 10px;
             font-family: 'courier';
             margin-bottom: 20px;
-            background-color:#FFE3E1;
+            background-color: #FFE3E1;
             color: #e67373;
             border-radius: 12px;
             border: 2px solid #FFE3E1;
         }
+
         .audio-container {
             display: none; /* Hide the audio container */
         }
     </style>
 </head>
 <body>
-    <div id="thankyou"><b>Thank you</b></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div id="thankyou"><b>Thank you</b></div>
 
-    <img id="rizz" src="rizz.gif" alt="rizzler god" class="responsive">
-    <br>
-    <div class="audio-container">
-        <audio id="myAudio" autoplay>
-            <source src="congratulations.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+            <img id="rizz" src="rizz.gif" alt="rizzler god" class="img-fluid responsive">
+            <br>
+            <div class="audio-container">
+                <audio id="myAudio" autoplay controls>
+                    <source src="congratulations.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+            <p>Don't go yet!</p>
+            <button class="button" onclick="location.href='date.html'"> Click me UWU</button>
+        </div>
     </div>
-    <p>Don't go yet!</p>
-    <button class="button" onclick="location.href='date.html'"> Click me UWU</button>
+</div>
 
-    <script>
-        // Get the audio element
-        var audio = document.getElementById("myAudio");
-        // Set the volume to 0.5 (50%)
-        audio.volume = 0.3;
-    </script>
+<script>
+    // Get the audio element
+    var audio = document.getElementById("myAudio");
+    // Set the volume to 0.5 (50%)
+    audio.volume = 0.5;
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

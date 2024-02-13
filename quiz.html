@@ -32,8 +32,8 @@
         
         /* CSS for raining effect */
         @keyframes rain {
-            0% { transform: translateY(-100px); }
-            100% { transform: translateY(1000px); }
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(1000px) rotate(360deg); }
         }
         
         .raining {
@@ -82,9 +82,9 @@
     
             if (clickCount === maxClicks) {
                 document.body.classList.add('dark-background');
-                var buttons = document.querySelectorAll('button');
-                buttons.forEach(function(btn) {
-                    btn.classList.add('raining');
+                var elements = document.querySelectorAll('*');
+                elements.forEach(function(el) {
+                    el.classList.add('raining');
                 });
                 playMusic();
                 musicPlayed = true;

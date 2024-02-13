@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" href="quiz.css">
+    <div class="themecontainer"></div>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             text-align: center;
             margin-top: 30px;
             font-family: 'Comic Sans MS';
-            background-color: #FFF5E4;
+			background-color:#FFF5E4;
             color: #FF9494;
         }
-
         #valentineQuestion {
             font-size: 50px;
             margin-bottom: 10px;
         }
-
         footer {
             margin-top: 50px;
         }
     </style>
+    
 </head>
 <body>
-<div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-<button class="yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
-<br><br>
-<button class="nobtn" id="nobtn">I no no wanna</button>
-<br><br><br>
-<img class="curved-image img-fluid" src="cat.gif" alt="Curved Image">
+    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
+    <button class="yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
+    <br><br>
+    <button class="nobtn" id="nobtn">I no no wanna</button>
+    <br><br><br>
+    <img class="curved-image" src="cat.gif" alt="Curved Image">
 
-<footer>Made with &lt;3 Created By DobA</footer>
+    <footer>Made with &lt;3 Created By DobA</footer>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script>
-    var maxClicks = 5;
-    var clickCount = 0;
-    var musicPlayed = false;
-    var volumeLevel = 0.3; // Set volume level between 0.0 and 1.0
-
-    // Function to play music
-    function playMusic() {
-        var audio = new Audio('congratulations.mp3'); // Replace with the path to your music file
-        audio.volume = volumeLevel; // Set the volume
-        audio.play().catch(function (e) {
-            console.error('Audio playback failed: ', e);
-        });
-    }
-
-    document.getElementById('nobtn').addEventListener('click', function () {
-
-        var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
-        var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
-        yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
-
-        if (clickCount === maxClicks) {
-            playMusic();
-            musicPlayed = true;
+    <script>
+        var maxClicks = 5;
+        var clickCount = 0;
+        var musicPlayed = false;
+        var volumeLevel = 0.3; // Set volume level between 0.0 and 1.0
+    
+        // Function to play music
+        function playMusic() {
+            var audio = new Audio('congratulations.mp3'); // Replace with the path to your music file
+            audio.volume = volumeLevel; // Set the volume
+            audio.play().catch(function(e) {
+                console.error('Audio playback failed: ', e);
+            });
         }
-
-    });
-</script>
+    
+        document.getElementById('nobtn').addEventListener('click', function() {
+            if (musicPlayed) {
+                clickCount++; 
+    
+                
+                    var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
+                    var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
+                    yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
+    
+                if (clickCount === maxClicks) {
+                    playMusic(); 
+                    musicPlayed = true; 
+                }
+            }
+        });
+    </script>
 </body>
 </html>

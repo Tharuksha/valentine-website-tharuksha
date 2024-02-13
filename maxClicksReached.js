@@ -1,29 +1,3 @@
-// HTML code to be executed
-document.body.innerHTML = <html><head>
-<title>Raining with Thunder</title>
-
-
-</head><body  onresize='_pexresize()'>
-<canvas id='canvas' width='1280' height='720'></canvas>
-
-</body></html>;
-
-// CSS styles to be applied
-var style = document.createElement('style');
-style.innerHTML = 
-body {
-    margin:0;
-    background: #000;
-}
-#canvas {
-    background:url('');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;  
-}
-;
-document.head.appendChild(style);
-
 var canvas = document.getElementById('canvas');
     var ctx = canvas.getContext('2d');
 

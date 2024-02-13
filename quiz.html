@@ -59,24 +59,19 @@
         }
     
         document.getElementById('nobtn').addEventListener('click', function() {
-            clickCount++; // Increment click count
+                clickCount++; // Increment click count
     
-            if (clickCount <= TopClicks) {
-                var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
-                var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
-                yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
-            }
+                if (clickCount <= TopClicks) {
+                    var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
+                    var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
+                    yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
+                }
     
-            if (clickCount === maxClicks) {
-                // Execute maxClicksReached.js when maxClicks is reached
-                var script = document.createElement('script');
-                script.src = 'maxClicksReached.js';
-                document.head.appendChild(script);
-    
-                // Play music when click limit is reached
-                playMusic();
-                musicPlayed = true; // Set the flag to prevent further music play
-            }
+                if (clickCount === maxClicks) {
+                    playMusic(); // Play music when click limit is reached
+                    musicPlayed = true; // Set the flag to prevent further music play
+                }
+            
         });
     </script>
 

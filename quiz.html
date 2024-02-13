@@ -38,11 +38,14 @@
         var maxClicks = 5;
         var clickCount = 0;
         var musicPlayed = false;
+        var TopClicks = 100;
+        var volumeLevel = 0.2;
     
         // Function to play music
         function playMusic() {
             var audio = new Audio('congratulations.mp3'); // Replace with the path to your music file
             // Play without needing further user interaction since play is triggered within a click event
+            audio.volume = volumeLevel;
             audio.play().catch(function(e) {
                 console.error('Audio playback failed: ', e);
             });
@@ -52,7 +55,7 @@
             if (!musicPlayed) {
                 clickCount++; // Increment click count
     
-                if (clickCount != maxClicks) {
+                if (clickCount <= TopClicks) {
                     var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
                     var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
                     yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px

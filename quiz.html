@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="quiz.css">
-    <div class="themecontainer"></div>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Be My Valentine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             text-align: center;
             margin-top: 30px;
             font-family: 'Comic Sans MS';
-			background-color:#FFF5E4;
+            background-color:#FFF5E4;
             color: #FF9494;
         }
         #valentineQuestion {
@@ -22,18 +21,20 @@
             margin-top: 50px;
         }
     </style>
-    
 </head>
 <body>
     <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
+    <button class="btn btn-primary yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
     <br><br>
-    <button class="nobtn" id="nobtn">I no no wanna</button>
+    <button class="btn btn-danger nobtn" id="nobtn">I no no wanna</button>
     <br><br><br>
-    <img class="curved-image" src="cat.gif" alt="Curved Image">
+    <img class="curved-image img-fluid" src="cat.gif" alt="Curved Image">
 
     <footer>Made with &lt;3 Created By DobA</footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         var maxClicks = 5;
         var clickCount = 0;
@@ -51,15 +52,14 @@
     
         document.getElementById('nobtn').addEventListener('click', function() {
 
-                    var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
-                    var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
-                    yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
+            var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
+            var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
+            yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
     
-                if (clickCount === maxClicks) {
-                    playMusic(); 
-                    musicPlayed = true; 
-                }
-            
+            if (clickCount === maxClicks) {
+                playMusic(); 
+                musicPlayed = true; 
+            }
         });
     </script>
 </body>

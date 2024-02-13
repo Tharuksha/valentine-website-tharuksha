@@ -52,7 +52,6 @@
         }
     
         document.getElementById('nobtn').addEventListener('click', function() {
-            if (!musicPlayed) {
                 clickCount++; // Increment click count
     
                 if (clickCount <= TopClicks) {
@@ -65,7 +64,7 @@
                     playMusic(); // Play music when click limit is reached
                     musicPlayed = true; // Set the flag to prevent further music play
                 }
-            }
+            
         });
     </script>
 </body>

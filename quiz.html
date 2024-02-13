@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +11,7 @@
             font-family: 'Comic Sans MS';
             background-color: #FFF5E4;
             color: #FF9494;
-        }
-        
-        /* Dark mode style */
-        .dark-mode {
-            background-color: #111;
-            color: #DDD;
+            transition: background-color 0.5s ease; /* Smooth transition for background color change */
         }
 
         #valentineQuestion {
@@ -36,39 +30,23 @@
             margin: 0 auto;
         }
 
-        /* Rain animation */
-        .rain {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        .dark-mode {
+            background-color: #191919; /* Dark background color */
+            color: #FFFFFF; /* Light text color */
+        }
+
+        .rain-effect {
+            position: fixed;
             top: 0;
             left: 0;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .raindrop {
-            position: absolute;
-            width: 2px;
-            height: 15px;
-            background-color: #777;
-            animation: rain 0.5s linear infinite;
-        }
-
-        @keyframes rain {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(100vh);
-                opacity: 1;
-            }
+            width: 100%;
+            height: 100%;
+            background-image: url('https://media.giphy.com/media/8wXKwn4GG9r8A/giphy.gif'); /* Rain GIF */
+            background-repeat: repeat;
+            pointer-events: none; /* Make the rain effect non-clickable */
         }
     </style>
-
 </head>
-
 <body>
     <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
     <button class="yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
@@ -76,9 +54,10 @@
     <button class="nobtn" id="nobtn">I no no wanna</button>
     <br><br><br>
     <img class="curved-imagee" src="cat.gif" alt="Curved Image">
+
     <footer>Made with &lt;3 Created By DobA</footer>
 
-    <div class="rain"></div>
+    <div id="rainEffect" class="rain-effect"></div>
 
     <script>
         var maxClicks = 5;
@@ -87,10 +66,15 @@
         var TopClicks = 100;
         var volumeLevel = 0.2;
 
+        // Function to play music and toggle dark mode with raining effect
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode'); // Toggle dark mode
+            document.getElementById('rainEffect').classList.toggle('rain-effect'); // Toggle raining effect
+        }
+
         // Function to play music
         function playMusic() {
-            var audio = new Audio('Y2metaapp.mp3'); // Replace with the path to your music file
-            // Play without needing further user interaction since play is triggered within a click event
+            var audio = new Audio('Y2metaapp.mp3');
             audio.volume = volumeLevel;
             audio.play().catch(function(e) {
                 console.error('Audio playback failed: ', e);
@@ -107,28 +91,11 @@
             }
 
             if (clickCount === maxClicks) {
-                playMusic(); // Play music when click limit is reached
-                musicPlayed = true; // Set the flag to prevent further music play
-
-                // Change page into dark mode
-                document.body.classList.add('dark-mode');
-
-                // Create raindrops
-                for (let i = 0; i < 100; i++) {
-                    createRaindrop();
-                }
+                toggleDarkMode(); // Toggle dark mode with raining effect
+                playMusic(); // Play music
+                musicPlayed = true;
             }
-
         });
-
-        // Function to create raindrops
-        function createRaindrop() {
-            const raindrop = document.createElement('div');
-            raindrop.classList.add('raindrop');
-            raindrop.style.left = Math.random() * window.innerWidth + 'px';
-            document.querySelector('.rain').appendChild(raindrop);
-        }
     </script>
 </body>
-
 </html>

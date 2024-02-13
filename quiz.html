@@ -1,81 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <link rel="stylesheet" href="quiz.css">
-    <div class="themecontainer"></div>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine</title>
-    <style>
-        body {
-            text-align: center;
-            margin-top: 30px;
-            font-family: 'Comic Sans MS';
-			background-color:#FFF5E4;
-            color: #FF9494;
-        }
-        #valentineQuestion {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-        footer {
-            margin-top: 50px;
-        }
-        .curved-imagee {
-            max-width: 100%; /* Ensure the image does not exceed its parent container */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Ensure the image is centered */
-            margin: 0 auto; /* Center the image horizontally */
-        }
-    </style>
-    
-</head>
-<body>
-    <div id="valentineQuestion"><b>Will you be my valentine?</b></div>
-    <button class="yesbtn" onclick="location.href='thankyou.html'"><h1>Yes</h1></button>
-    <br><br>
-    <button class="nobtn" id="nobtn">I no no wanna</button>
-    <br><br><br>
-    <img class="curved-imagee" src="cat.gif" alt="Curved Image">
+<script>
+    var maxClicks = 5;
+    var clickCount = 0;
+    var musicPlayed = false;
+    var TopClicks = 100;
+    var volumeLevel = 0.2;
 
-    <footer>Made with &lt;3 Created By DobA</footer>
-
-
-    <script>
-        var maxClicks = 5;
-        var clickCount = 0;
-        var musicPlayed = false;
-        var TopClicks = 100;
-        var volumeLevel = 0.2;
-    
-        // Function to play music
-        function playMusic() {
-            var audio = new Audio('Y2metaapp.mp3'); // Replace with the path to your music file
-            // Play without needing further user interaction since play is triggered within a click event
-            audio.volume = volumeLevel;
-            audio.play().catch(function(e) {
-                console.error('Audio playback failed: ', e);
-            });
-        }
-    
-        document.getElementById('nobtn').addEventListener('click', function() {
-                clickCount++; // Increment click count
-    
-                if (clickCount <= TopClicks) {
-                    var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
-                    var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
-                    yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
-                }
-    
-                if (clickCount === maxClicks) {
-                    playMusic(); // Play music when click limit is reached
-                    musicPlayed = true; // Set the flag to prevent further music play
-                }
-            
+    // Function to play music
+    function playMusic() {
+        var audio = new Audio('Y2metaapp.mp3'); // Replace with the path to your music file
+        // Play without needing further user interaction since play is triggered within a click event
+        audio.volume = volumeLevel;
+        audio.play().catch(function(e) {
+            console.error('Audio playback failed: ', e);
         });
-    </script>
+    }
 
-</body>
+    document.getElementById('nobtn').addEventListener('click', function() {
+        clickCount++; // Increment click count
 
+        if (clickCount <= TopClicks) {
+            var yesbtn = document.querySelector('button[onclick*="thankyou.html"]');
+            var currentFontSize = parseInt(window.getComputedStyle(yesbtn).fontSize);
+            yesbtn.style.fontSize = (currentFontSize + 10) + 'px'; // Increase font size by 10px
+        }
 
-</html>
+        if (clickCount === maxClicks) {
+            // Execute maxClicksReached.js when maxClicks is reached
+            var script = document.createElement('script');
+            script.src = 'maxClicksReached.js';
+            document.head.appendChild(script);
+
+            // Play music when click limit is reached
+            playMusic();
+            musicPlayed = true; // Set the flag to prevent further music play
+        }
+    });
+</script>
